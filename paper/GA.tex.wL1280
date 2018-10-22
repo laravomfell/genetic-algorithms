@@ -1,0 +1,138 @@
+\section{Using Evolutionary Algorithms for Ensemble Selection}
+Ensemble Selection is essentially an optimization problem in a constrained search space. In order to find an effective solution, optimization strategies must exploit all available information. One can use derivative-based information, i.e. on the gradient of the search space. In the case of complex spaces with many local optima, these methods tend to get stuck and miss preferable solutions. Evolutionary Algorithms capitalize on a different strategy that often makes a suitable trade-off between exploration and exploitation of the search space. Hence, they are a search heuristic worthwhile exploring for ensemble selection.
+
+\subsection{Introduction to Evolutionary Algorithms}
+\label{introEA}
+Evolutionary Algorithms are nature-inspired optimization algorithms. The idea of emulating natural selection and evolution emerged very early into the development of computational optimization; already in the 1950s, first evolution systems were employed to optimize real-valued functions \cite[p. 2]{mitchell1999introduction}. The first genetic algorithm that mimics the way genes on a chromosome are encoded, was developed by John Holland in the 1960s. In his book \emph{Adaptation in natural and artificial systems}, Holland presented an advanced, more abstract version of the GA that is able to solve many different problem along with a theoretical framework of how GAs optimize \citep{holland1975adaptation}. Genetic Algorithms still follow the structure presented by \citeauthor{holland1975adaptation}.\footnote{\cite{mitchell1999introduction} notes that Holland also introduced \textit{Inversion}, a concept that has not found widespread propagation.} As many terms are derived from biology and might deserve explanation, some concepts and vocabulary are briefly here. EAs are \emph{population}-based, a group of candidate solutions to the problem at hand. The population can also be called swarm or XXX and its size is denoted by $N$. The candidate solution is usually called \emph{chromosome}, but also particle, individual or string. It can be a binary-encoded or a real-valued numeric vector. The candidate solution consists of positions of \emph{genes}, \emph{loci} and contains as many loci as the problem has dimensions. The value at each locus is called \emph{allele}. As an example, in the case of ensemble selection, the problem dimension is equal to the number of models $D$ in the model library. So each chromosome $x$ consists of $D$ genes and the value at $x_i$ corresponds to the weight assigned to model $i \in 1,\dots, D$. \\
+Typically, EAs consist of five stages: 1. Initialization, where the initial population of dimensions $N \times D$ is randomly created. 2. Evaluation: its fitness is evaluated on some cost function to be optimized. 3. Selection: a fixed number of best performing chromosomes is selected for the next stages. 4. Crossover: two chromosomes are randomly selected and combined to produce offspring. 5. Mutation: the offspring is randomly mutated and included in the population. The steps 2--5 are repeated until a stopping criterion is reached, e.g. the optimum, a fixed number of generations or a convergence criterion. \\
+This basic setup can be varied and extended in numerous ways. Instead of random selection, one can implement fitness-proportionate selection or roulette-wheel selection, where better performing solutions are assigned a higher probability of selection. An alternative is tournament selection where randomly chosen chromosomes "perform again" each other and the best individuals are selected \citep{miller1995genetic}.
+There are many options on how to combine the parents to produce offspring, the simplest one being one-point crossover where both parents are split at a random point $i \in 1,\dots, D$ and the first child inherits the characteristics of the first parent up until $i$ from where on it posses the second parent's properties. The inverse is applied to the second child. Another common modification is elitism where a fixed number of best evaluated chromosomes in each generation are preserved and replace the worst performing chromosomes in step 5 and are directly transferred to the next generation. \\
+%invalid solutions
+%canonical
+%implicit parallelism
+% too much exploitation: local hillclimbing; too much exploration: loss of valuable information
+% cite De Jong 1993 about encoding p. 14 % which is better
+%Additionally, evolutionary algorithms can either optimize binary encoded solutions as well as real-valued solutions. This is representative of the major advantage of evolutionary algorithms compared to other optimization strategies: its adaptiveness. Most evolutionary algorithms fail to find the global optimum (citation), but they are well versed to solve a range of problems and find sufficiently satisfying solutions.
+
+%"A genetic algorithm maintains a population of potential solutions to the objective function being optimized. The initial group of potential solutions is determined randomly. These potential solutions, called "chromosomes," are allowed to evolve over a number of generations. At every generation, the fitness of each chromosome is calculated. The fitness is a measure of how well the potential solution optimizes the objective function. The subsequent generation is created through a process of selection and recombination. The chromosomes are probabilistically chosen for recombination based upon their fitness; this is a measure of how well the chromosomes achieve the desired goal (e.g. find the minimum in a specified function, etc.). The recombination operator combines the information contained within pairs of selected "parents", and places a mixture of the information from both parents into a member of the subsequent generation. Selection and recombination are the mechanisms through which the population "evolves." Although the chromosomes with high fitness values will have a higher probability of being selected for recombination than those which do not, they are not guaranteed to appear in the next generation. The "children" chromosomes produced by the genetic recombination are not necessarily better than their "parent" chromosomes. Nevertheless, because of the selective pressure applied through a number of generations, the overall trend is towards better chromosomes.
+%In order to perform extensive search, genetic diversity must be maintained. When diversity is lost, it is possible for the GA to settle into a sub-optimal state. There are two fundamental mechanisms which the basic GA uses to maintain diversity. The first, mentioned above, is a probabilistic scheme for selecting which chromosomes to recombine. This ensures that information other than that represented in the best chromosomes appears in the subsequent generation. Recombining only good chromosomes will very quickly converge the population without extensive exploration, thereby increasing the possibility of finding only a local optimum. The second mechanism is mutation; mutations are used to help preserve diversity and to escape from local optima. Mutations introduce random changes into the population.
+EAs are often used in the following scenarios: the problem is very complex or high-dimensional. Also, because they work heuristically and not analytically, discontinuous or non-differentiable objective functions are not an issue to their performance as opposed to derivative-based algorithms. Also, as EAs can deal with the exploration/exploitation trade-off quite well so that search spaces with many local optima do not necessarily impede their convergence. 
+Nevertheless, one needs to bear in mind that EAs do not find the analytical function optimum. With finite populations, they may never reach the global optimum or lose it over time due to mutation. EAs are best applied in situations where a reasonably satisfying solution in a reasonable time frame is sufficient. As De Jong argues: the genetic algorithm "is attempting to maximize cumulative payoff from arbitrary landscapes, deceptive or otherwise. In general, this is achieved by not investing too much effort in finding cleverly hidden peaks (the risk/reward ratio is too high)." \cite[p. 15]{de1993genetic}. This notion can be transferred to all EAs \cite[p. 92]{mitchell1999introduction}.\\ %some of the pioneering work [Holland, 1975]
+%In order to control this, their parameters must be carefully tuned. A large enough population size for example can help maintain many diverse solution. \\
+
+
+
+
+
+\subsection{Optimizing Ensemble Selection}
+When using EAs, two fundamental questions need to be decided upon at the start: the function to be optimized and the encoding. EAs can be binary-encoded, meaning that each gene on the chromosome is either 0 or 1. In the case of Ensemble Selection, a 0 at $x_i$ means that the model $i \in 1,\dots D$ is not included and vice versa. For the evaluation the 1's are divided by their sum, i.e. an exemplary vector $x_{[1:5]} = {01101}$ is divided by the number of 1's, 3 in this case, such that the weights sum up to 1. As an alternative, the solution vector can be real-valued or numerical. Instead of 0/1, the value at $x_i$ can be any value within the boundary, which in the case of ES is confined to $[0,1]$. As the weights need to sum up to 1, they are divided by their cumulative sum. As an example, a preliminary solution vector $x = {0.1, 0.5, 0.8, 0.2, 0.05}$ is divided by 1.65 so that the final solution vector is $x = {0.06, 0.3, 0.48, 0.12, 0.03}$. To prevent the EAs from including a large number of arbitrarily small weights, sparsity rules can be enforced where weights smaller than 1\% can be excluded. %REF TO PSEUDOCODE AT BOTTOM?
+
+EAs have a tendency to overfit and there is some experimental evidence that they overfit ensemble selection problems (\cite{Robilliard2002}, \cite{radtke2006impact}, \cite{dos2009overfitting}). Complex validation strategies can be implemented to prevent this; their performance however is not overly effective and the effect size of overfitting is rather small \cite[p. 1424]{dos2008overfitting}.
+
+%BAGGING
+
+Most evolutionary algorithms manage to find a desirable balance between exploration of the search space and XXX. (Citation) %EXPlaining search space?! Mitchell p.6
+
+%All the "search for solutions" methods (1) initially generate a set of candidate solutions (in the GA this is the initial population; in steepest−ascent hill climbing this is the initial string and all the one−bit mutants of it), (2) evaluate the candidate solutions according to some fitness criteria, (3) decide on the basis of this evaluation which candidates will be kept and which will be discarded, and (4) produce further variants by using some kind of operators on the surviving candidates. The particular combination of elements in genetic algorithms—parallel population−based search with stochastic selection of many individuals, stochastic crossover and mutation—distinguishes them from other search methods. Many other search methods have some of these elements, but not this particular combination. %Mitchel 12
+
+
+%IMPLICIT parallelism
+
+Holland frames adaptation as a tension between "exploration" (the search for new, useful adaptations) and
+"exploitation" (the use and propagation of these adaptations). The tension comes about since any move toward
+exploration—testing previously unseen schemas or schemas whose instances seen so far have low
+fitness—takes away from the exploitation of tried and true schemas. In any system (e.g., a population of
+organisms) required to face environments with some degree of unpredictability, an optimal balance between
+exploration and exploitation must be found. The system has to keep trying out new possibilities (or else it
+could "overadapt" and be inflexible in the face of novelty), but it also has to continually incorporate and use
+past experience as a guide for future behavior.
+
+Theory on this schema (Vose 1991)
+
+% the only information exploited is contained the fitness valued, directed towards higher fit points, search guiding
+%local information vs global objective, balance p.63 cite karr karr1999practical
+
+
+%Why would we ever expect a GA to outperform RMHC on a landscape like R1? In principle, because of implicit parallelism and crossover. If implicit parallelism works correctly on R1, then each of the schemas competing in the relevant partitions in R1 should have a reasonable probability of receiving some samples at each generation—in particular, the schemas with eight adjacent ones in the defining bits should have a reasonable probability of receiving some samples. This amounts to saying that the sampling in each schema region in R1 has to be reasonably independent of the sampling in other, nonoverlapping schema regions. In our GA this was being prevented by hitchhiking—in the run represented in figure 4.2, the samples in the s3 region were not independent of those in the s2 and s4 regions. In RMHC the successive strings examined produce far from independent samples in each schema region: each string differs from the previous string in only one bit. However, it is the constant, systematic exploration, bit by bit, never losing what has been found, that gives RMHC the edge over our GA. %Mitchell 99
+
+
+% can be parallelized with island populations or slave-master populations
+
+%principies of natural selection and genetic recombination.
+
+%The GAs described in the current literature are highly modified to reconcile the differences between function optimization, in which the effectiveness is measured by the best solution found, and maximizing cumulative returns, in which finding the absolute best solution may not be the only critical issue. %Baluja p.5
+
+
+
+
+
+\subsection{Algorithms implemented}
+In order to find the optimal weights for the ensemble selection problem, a number of different evolutionary algorithms was considered, each with particular properties that might prove helpful in solving the optimization problem at hand. In the sections below, each of them are shortly introduced. %The final selection consists of the "standard" Genetic Algorithm (GA), d the Backtracking Search Algorithm (BSA), Population-based Incremental Learning (PBIL), XXX. As a benchmark of performance, convergence speed and XXX, we selected both the "traditional" approach as described in \cite{caruana2004ensemble} and Stochastic Hill-Climbing which is often described as the best heuristic. 
+
+%binary/numerical
+For all five types, pseudocode is available in the Appendix \ref{append}
+
+\subsubsection{Genetic Algorithm}
+%\ref{GA}
+As the Genetic Algorithm (GA) has already been explained in its canonical form in Section \ref{introEA} as a prototype of EAs, it will not be dealt with in much detail. For the ES case, a GA with elitism, one-point crossover and roulette-wheel selection has been implemented.
+
+
+\subsubsection{Backtracking Search Optimization Algorithm}
+%ref{BSA}
+The Backtracking Search Optimization Algorithm (BSA) is comparatively new algorithm that was introduced in 2013 to solve numerical problems \citep{civicioglu2013backtracking}. Out of all the algorithms taken into account, it can be considered the "sleekest" with only one control parameter. Additionally to the GA phases, a second Selection stage is implemented at the very beginning where an old population is maintained such that the BSA population preserves a memory. 
+The procedure of the BSA is described in the Appendix A.\ref{BSA}. After initialization follows the new selection stage where the historical population is randomly updated according to $\textit{if } a < b  \:|\: a,b \sim U(0,1 )$. It is then permuted and Mutation and Crossover follow. The population is mutated based on Equation (\ref{eqbsa1}):
+\begin{equation} \label{eqbsa1}
+\textit{Mutant} = \textit{Population} + F \cdot (\textit{historical Population} - \textit{Population})
+\end{equation}
+ where $F = 3 \cdot \varepsilon$ ($\varepsilon \sim N(0,1)$).
+The original BSA is developed for numerical, real-valued problems but it can easily be adapted to binary encoding.
+
+\subsubsection{Population-Based Incremental Learning}
+%ref{PBIL}
+%abstraction of a genetic algorithm
+The Population-Based Incremental Learning Algorithm (PBIL) was invented in 1994 by Baluja and combines "regular" genetic algorithms with competitive learning \cite[p. 4]{baluja1994population} (still no idea what competitive learning is, something about weights???)
+
+Due to the aforementioned criticisms of GA (see XXXXX), the PBIL drops the population. Instead, it uses a probability vector from which population samples are drawn. This vector denotes the probability of a certain value appearing at a certain position of the solution vector. In a binary setting of the PBIL, the probability vector of a population denotes the probability of a '1' appearing at position $i$ of the candidate solution $x$. Instead of recombination to obtain solutions with high fitness, the probability vector from which the population is drawn is gradually shifted towards solutions with high fitness \cite[p. 11]{baluja1994population}. The vector is initialized with 0.5 and is updated by the following rule:
+\begin{equation}
+p_i = p_i \cdot (1 - \gamma) + (\gamma \cdot x_i),
+\end{equation}
+where $p_i$ is the probability of generating a '1' bit at position $i$, $x_i$ is the solution vector at position $i$ towards which the probability vector at $i$ is moved and $\gamma$ is the learning rate. The learning rate affects how quickly the probability vector moves towards a feasible solution, i.e. how informative the previous search is. As such, it controls the trade-off between exploration and exploitation and premature convergence. It is usually suggested to set the learning rate to values around 0.1, as higher values lead to an early search focus whereas lower values enable greater search exploration, which is preferable when there is no certainty on the prevalence of local optima. \cite[p. 16--17]{baluja1994population}.
+It should be noted that the PBIL and the probability vector so far are as described in \cite{baluja1994population}, meaning that only binary encoding is considered. The PBIL, however, can easily be adapted to real-valued or XXX problems, making the implication of a probability vector much more complicated. %different phrasing
+For continuous values, the PBIL has been extended to implement distributional probabilities.\\ %phrasing, citations
+As an alternative, \cite{servet1997telephone} suggest an interval-based probability vector. It is assumed that the solution is continuous and bounded, such that for each position $i$, an bounded interval $[low_i, up_i]$ can be defined. The value at position $i$ of the probability vector then denotes the probability that $x_i$ is greater than a threshold. The initial threshold is defined as $\frac{low_i + up_i}{2}$ and is updated throughout the iterations. If $p_i \geq 0.9$, i.e. the probability that $x_i$ is greater than the threshold is $\geq 0.9$, the threshold is updated to $\frac{\frac{low_i + up_i}{2} + up_i}{2}$, i.e. $low_i$ is updated to the previous threshold and $p_i$ is reinitialized at 0.5. Both $p_i$ and the $up_i$ are updated equivalently whenever $p_i \leq 0.1$. In our case, we redefined the interval slightly, in that instead of $\frac{low_i + up_i}{2}$, we chose $\frac{low_i + up_i}{\sum{i}}$ such that the initial probability assumes equal weights of $\frac{1}{\sum{i}}$ that sum up to 1. %anders formatieren
+
+
+%TODO the algorithm can be adjusted to consider X best solutions instead of just one; negative learning rate
+
+
+\subsubsection{Particle Swarm Optimization}
+%ref{PSO}
+The Particle Swarm Optimization Algorithm (PSO) draws on swarm intelligence to find the optimum. The candidate solutions, called particles, move through the search space by random mutations, called velocities. The velocity of each particle consists of three components: an inertia weight, i.e. the "unwillingness" of a particle to leave its current position which also prevents it from moving too erratically, a cognitive component, i.e. the particle's ability to remember a previous good solution, and a social component, i.e. the particle's ability to move towards optimal solutions found by its neighbors in the swarm. 
+The PSO was introduced in 1995 by Kennedy and Eberhart and simulates the social behavior of bird flocking or fish swarming. It has since been adapted many times and various attempts to standardize the algorithm have been undertaken (see Maurice Clerc.) While the PSO possesses many advantages that make it a promising solution to optimization problem (reference), one of its major drawbacks is its instability (expand). Additionally, the PSO is very dependent on the parameter values, probably even more than other evolutionary algorithms (see REF, citation)
+The particles evolve by the following equations:
+\begin{align}
+v_{i,t+1} &= \gamma v_{i,t} + \varphi_1 \delta(0,1)(P_i - x_{i,t}) + \varphi_2 \delta(P_g - x_{i,t})\\
+x_{i,t+1} &= x_{i,t} + v_{i,t+1}
+\end{align}
+where $\delta \sim U(0,1)$, $x_{i,t}$ is the value at position $i$ and time step $t$ of the candidate solution $x$, $P_i$ refers to the previously best personal solution and $P_g$ denotes the best solution in the neighborhood. \\
+The inertia weight $\gamma$ controls how fast each particle moves and was not in the proposition for the original PSO \citep{kennedy1995}. It was added three years later as it adds significantly to the algorithm's ability to search and exploit the search space \cite[p. 70]{shi1998modified}. For $\gamma > 1.2$ the swarm keeps on exploiting new search areas, for $\gamma < 0.8$ it exploits local areas more and finds the balance between the two for values $0.8 < \gamma < 1.2$ However, experimental studies have shown that non-fixed $\gamma$ values also perform extremely well and that the so called random inertia weight $\gamma = 0.5 + \delta/2$ performs well on a number of different problems \cite[p. 643]{bansal2011inertia}.
+$\varphi_1$ and $\varphi_2$, the acceleration coefficients control the influence of information on the movement of the particles. Usually, one sets $\varphi_1 = \varphi_2$ to values around 2 \cite[p. 1946]{kennedy1995}. \\
+Additionally, the information neighborhood of each particle, also called topology, is not a trivial setup as it determines how much information is available to each particle. The two most common ones are the \textit{lbest} and \textit{gbest} topologies but there are many other variants. In the \textit{lbest}, each particle $i$ is informed on its own position and its two adjacent neighbors, resulting in a ring lattice (see Figure \ref{Fig:topo}). In a \textit{gbest} setting, which is also the setting in the initial algorithm, the particles are informed by the global neighborhood. The information flow in this social network influences the convergence behavior strongly: In a study by \cite{kennedymendes}, different topologies were evaluated and \textit{gbest} performed worst in both accuracy and speed, while \textit{lbest} performed slightly better when removing particle $i$ (the self) from the information \cite[p. 1674]{kennedymendes}. For this paper, both the \textit{gbest} and \textit{lbest} without self are tested; more complex topologies von Neumann neighborhood were not considered due to the popularity of the former and the complexity of the latter.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[scale=0.9]{topology}
+		\caption{A visualization of the \textit{gbest} and \textit{lbest} topologies \cite[p. 1671]{kennedymendes}.}
+		\label{Fig:topo}
+	\end{center}
+\end{figure}
+
+
+
+\subsubsection{(Stochastic) Hill-climbing}
+Simple Hill-climbing is an iterative search algorithm that does not belong to the class of evolutionary algorithms. It is, however, a powerful and fast algorithm that XXX.
+HC systematically modifies an initial candidate solution in directions that yield higher fitness values. If the first modification did not improve the current fitness value, the solution moves into another direction. Ideally, in a convex space with only one optimum, HC returns the hill-top, the best solution after a fixed number of iterations \cite[p. 252]{skiena2008algorithm}. As solutions with lower fitness values are not further investigated, HC is prone to get stuck in local optima as it cannot return to previous points and must go upwards \cite[p. 113]{russell1995modern}. 
+One resolution to mitigate this problem is Stochastic Hill-climbing where a random neighbor around the current solution is selected and evaluated. If it yields higher fitness, it replaces the current solution. instead of systematic mutation, randomly mutated candidate are evaluated and accepted if they yield a higher fitness. With this probabilistic element, the HC is forced to consider solutions further away from the current solution.
+
+Both the simple HC and the SHC are simple to implement and perform very well on a number of optimization problems \citep{Jacobson2004}. They are often used as benchmark comparisons because one can justify (or fail to justify) the use of more complex algorithms like EAs when simpler and faster methods like HC perform competitively (\cite{mitchell1993will}, \cite{wattenberg1996stochastic}, \cite{PRUGELBENNETT2004135}). %OUTPERFORMANCE? UP?
+

@@ -1,0 +1,20 @@
+\section{Introduction} 
+When confronted with a problem, you go around and ask experts on their opinion. In an overly simplified sense, that is how Ensemble Selection (ES) works.
+
+Given a specific data forecasting problem, it is not trivial to decide which predictive model to use, on what metric it should be evaluated or what the optimal parameter settings are, especially when different models make different errors and have varying performances on different metrics. With Ensemble Selection, one trains a number of models and combines their predictions to retrieve a final prediction, much like people intuitively do when asking around for opinions. Ensemble Selection was first introduced by \cite{dasarathy1979composite} and has been researched extensively since the 1990s under various names, e.g. committee of learners, classifier ensemble, consensus group or mixture of experts. The combination of different models, called classifiers in this paper, that make different errors into one ensemble typically improves the accuracy. This, however, immediately raises two questions, \mbox{1. }which models should be included in the ensemble and \mbox{2. }how? Not all classifier combinations yield better results than a single well-tuned classifier. As such, the combination needs to be optimized to maximize the overall accuracy. One could theoretically use an exhaustive search on all possible combinations, driving the computational cost through the roof. Other search algorithms are feasible with satisfying solutions. In this paper, different Evolutionary Algorithms (EAs) are employed to find the optimal ensemble. 
+
+%The first EAs emerged in the 1950s and since then, there has been a continuous stream of testing, improving and conceiving new algorithms. 
+Evolutionary Algorithms are a problem-solving technique where populations of solutions to a problem are developed similarly to behavior observed in nature. Their heuristic nature makes them a convenient and suitable application in many problems, Ensemble Selection among them. 
+
+Specifically, this paper investigates the synthesis of Evolutionary Algorithms with a novel bagged Ensemble Selection approach proposed by \cite{caruana2004ensemble}. To this end, four evolutionary algorithms are applied to data on fashion retail returns made available during the DATA MINING CUP competition 2016. Additionally, they are combined with bagging and compared to several baseline evaluations. The paper is organized as follow: Section \ref{ES} introduces the technique of Ensemble Selection, Section \ref{UsingEA} explains the general mechanism behind Evolutionary Algorithms and how they can be used for Ensemble Selection, Section \ref{alg} expands on the algorithms used during the empirical study which is explain in Section \ref{design}. The results and some final conclusions are presented in Sections \ref{results} and \ref{conc}.
+
+
+
+
+
+%Ensemble techniques are also widely applied in the field of multi-objective optimization - solving optimization problems using more that one performance assessment criteria. Abbass et. al [Pareto Neuro-Evolution: Constructing Ensemble of Neural Networks Using Multi-objective Optimization] trained multiple artificial neural networks as a MO-problem and used the resulting Pareto-frontier of possible solutions to construct an ensemble (Pareto differential evolution method ) that performed better than single NN.  
+%(Probably add some more MO examples here.......) 
+
+
+ 
+

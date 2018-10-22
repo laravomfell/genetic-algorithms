@@ -1,0 +1,212 @@
+\begin{thebibliography}{37}
+\newcommand{\enquote}[1]{``#1''}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[\protect\citeauthoryear{Baluja}{Baluja}{1994}]{baluja1994population}
+\textsc{Baluja, S.} (1994): \enquote{Population-based incremental learning. a
+  method for integrating genetic search based function optimization and
+  competitive learning,} Tech. rep., DTIC Document.
+
+\bibitem[\protect\citeauthoryear{Bansal, Singh, Saraswat, Verma, Jadon, and
+  Abraham}{Bansal et~al.}{2011}]{bansal2011inertia}
+\textsc{Bansal, J., P.~Singh, M.~Saraswat, A.~Verma, S.~S. Jadon, and
+  A.~Abraham} (2011): \enquote{Inertia weight strategies in particle swarm
+  optimization,} in \emph{Nature and Biologically Inspired Computing (NaBIC),
+  2011 Third World Congress on}, IEEE, 633--640.
+
+\bibitem[\protect\citeauthoryear{Breiman}{Breiman}{1996}]{Breiman1996}
+\textsc{Breiman, L.} (1996): \enquote{Bagging Predictors,} \emph{Machine
+  Learning}, 24, 123--140.
+
+\bibitem[\protect\citeauthoryear{Brown, Wyatt, Harris, and Yao}{Brown
+  et~al.}{2005}]{brown2005diversity}
+\textsc{Brown, G., J.~Wyatt, R.~Harris, and X.~Yao} (2005): \enquote{Diversity
+  creation methods: a survey and categorisation,} \emph{Information Fusion}, 6,
+  5--20.
+
+\bibitem[\protect\citeauthoryear{Caruana, Niculescu-Mizil, Crew, and
+  Ksikes}{Caruana et~al.}{2004}]{caruana2004ensemble}
+\textsc{Caruana, R., A.~Niculescu-Mizil, G.~Crew, and A.~Ksikes} (2004):
+  \enquote{Ensemble selection from libraries of models,} in \emph{Proceedings
+  of the twenty-first international conference on Machine learning}, ACM.
+
+\bibitem[\protect\citeauthoryear{Cawley and Talbot}{Cawley and
+  Talbot}{2010}]{cawley2010over}
+\textsc{Cawley, G.~C. and N.~L. Talbot} (2010): \enquote{On over-fitting in
+  model selection and subsequent selection bias in performance evaluation,}
+  \emph{Journal of Machine Learning Research}, 11, 2079--2107.
+
+\bibitem[\protect\citeauthoryear{Civicioglu}{Civicioglu}{2013}]{civicioglu2013backtracking}
+\textsc{Civicioglu, P.} (2013): \enquote{Backtracking search optimization
+  algorithm for numerical optimization problems,} \emph{Applied Mathematics and
+  Computation}, 219, 8121--8144.
+
+\bibitem[\protect\citeauthoryear{Dasarathy and Sheela}{Dasarathy and
+  Sheela}{1979}]{dasarathy1979composite}
+\textsc{Dasarathy, B.~V. and B.~V. Sheela} (1979): \enquote{A composite
+  classifier system design: concepts and methodology,} \emph{Proceedings of the
+  IEEE}, 67, 708--713.
+
+\bibitem[\protect\citeauthoryear{{DATA MINING CUP}}{{DATA MINING
+  CUP}}{2016}]{dmcdata}
+\textsc{{DATA MINING CUP}} (2016): \enquote{Predicting returns for the sales of
+  discounted articles and voucher redemptions,} Available under:
+  \url{data.mining-cup.de}; last visited 07/14/2016.
+
+\bibitem[\protect\citeauthoryear{De~Jong}{De~Jong}{1993}]{de1993genetic}
+\textsc{De~Jong, K.~A.} (1993): \enquote{Genetic algorithms are NOT function
+  optimizers,} \emph{Foundations of genetic algorithms}, 2, 5--17.
+
+\bibitem[\protect\citeauthoryear{Dietterich}{Dietterich}{2000}]{dietterich2000ensemble}
+\textsc{Dietterich, T.~G.} (2000): \enquote{Ensemble methods in machine
+  learning,} in \emph{International workshop on multiple classifier systems},
+  Springer, 1--15.
+
+\bibitem[\protect\citeauthoryear{Dos~Santos, Oliveira, Sabourin, and
+  Maupin}{Dos~Santos et~al.}{2008}]{dos2008overfitting}
+\textsc{Dos~Santos, E.~M., L.~S. Oliveira, R.~Sabourin, and P.~Maupin} (2008):
+  \enquote{Overfitting in the selection of classifier ensembles: a comparative
+  study between pso and ga,} in \emph{Proceedings of the 10th annual conference
+  on Genetic and evolutionary computation}, ACM, 1423--1424.
+
+\bibitem[\protect\citeauthoryear{Dos~Santos, Sabourin, and Maupin}{Dos~Santos
+  et~al.}{2009}]{dos2009overfitting}
+\textsc{Dos~Santos, E.~M., R.~Sabourin, and P.~Maupin} (2009):
+  \enquote{Overfitting cautious selection of classifier ensembles with genetic
+  algorithms,} \emph{Information Fusion}, 10, 150--162.
+
+\bibitem[\protect\citeauthoryear{Holland}{Holland}{1975}]{holland1975adaptation}
+\textsc{Holland, J.~H.} (1975): \emph{Adaptation in natural and artificial
+  systems}, U Michigan Press.
+
+\bibitem[\protect\citeauthoryear{Jacobson and Y{\"u}cesan}{Jacobson and
+  Y{\"u}cesan}{2004}]{Jacobson2004}
+\textsc{Jacobson, S.~H. and E.~Y{\"u}cesan} (2004): \enquote{Analyzing the
+  Performance of Generalized Hill Climbing Algorithms,} \emph{Journal of
+  Heuristics}, 10, 387--405.
+
+\bibitem[\protect\citeauthoryear{Kennedy and Eberhart}{Kennedy and
+  Eberhart}{1995}]{kennedy1995}
+\textsc{Kennedy, J. and R.~Eberhart} (1995): \enquote{Particle swarm
+  optimization,} in \emph{Neural Networks, 1995. Proceedings., IEEE
+  International Conference on}, vol.~4, 1942--1948.
+
+\bibitem[\protect\citeauthoryear{Kennedy and Mendes}{Kennedy and
+  Mendes}{2002}]{kennedymendes}
+\textsc{Kennedy, J. and R.~Mendes} (2002): \enquote{Population structure and
+  particle swarm performance,} in \emph{Evolutionary Computation, 2002. CEC
+  '02. Proceedings of the 2002 Congress on}, vol.~2, 1671--1676.
+
+\bibitem[\protect\citeauthoryear{Krogh}{Krogh}{1996}]{krogh1996learning}
+\textsc{Krogh, P. S.~A.} (1996): \enquote{Learning with ensembles: How
+  over-fitting can be useful,} in \emph{Proceedings of the 1995 Conference},
+  vol.~8, 190.
+
+\bibitem[\protect\citeauthoryear{Kuncheva}{Kuncheva}{2005}]{kuncheva2005using}
+\textsc{Kuncheva, L.~I.} (2005): \enquote{Using diversity measures for
+  generating error-correcting output codes in classifier ensembles,}
+  \emph{Pattern Recognition Letters}, 26, 83--90.
+
+\bibitem[\protect\citeauthoryear{Kuncheva and Whitaker}{Kuncheva and
+  Whitaker}{2003}]{Kuncheva2003}
+\textsc{Kuncheva, L.~I. and C.~J. Whitaker} (2003): \enquote{Measures of
+  Diversity in Classifier Ensembles and Their Relationship with the Ensemble
+  Accuracy,} \emph{Machine Learning}, 51, 181--207.
+
+\bibitem[\protect\citeauthoryear{Miller and Goldberg}{Miller and
+  Goldberg}{1995}]{miller1995genetic}
+\textsc{Miller, B.~L. and D.~E. Goldberg} (1995): \enquote{Genetic algorithms,
+  tournament selection, and the effects of noise,} \emph{Complex systems}, 9,
+  193--212.
+
+\bibitem[\protect\citeauthoryear{Mitchell}{Mitchell}{1999}]{mitchell1999introduction}
+\textsc{Mitchell, M.} (1999): \emph{An introduction to genetic algorithms},
+  Cambridge, Massachusetts London, England, fifth printing ed.
+
+\bibitem[\protect\citeauthoryear{Mitchell and Holland}{Mitchell and
+  Holland}{1993}]{mitchell1993will}
+\textsc{Mitchell, M. and J.~H. Holland} (1993): \enquote{When will a genetic
+  algorithm outperform hill-climbing?} Tech. Rep. SGI Working Paper
+  1993-06-037, Santa Fe Institute.
+
+\bibitem[\protect\citeauthoryear{Oliveira, Morita, Sabourin, and
+  Bortolozzi}{Oliveira et~al.}{2005}]{oliveira2005multi}
+\textsc{Oliveira, L.~S., M.~Morita, R.~Sabourin, and F.~Bortolozzi} (2005):
+  \enquote{Multi-objective genetic algorithms to create ensemble of
+  classifiers,} in \emph{International Conference on Evolutionary
+  Multi-Criterion Optimization}, Springer, 592--606.
+
+\bibitem[\protect\citeauthoryear{Opitz and Maclin}{Opitz and
+  Maclin}{1999}]{opitz1999popular}
+\textsc{Opitz, D. and R.~Maclin} (1999): \enquote{Popular ensemble methods: An
+  empirical study,} \emph{Journal of Artificial Intelligence Research}, 11,
+  169--198.
+
+\bibitem[\protect\citeauthoryear{Polikar}{Polikar}{2008}]{polikarphoto}
+\textsc{Polikar, R.} (2008): \enquote{Combining classifiers with different
+  decision boundaries reduce error,} Available under
+  \url{http://www.scholarpedia.org/article/File:Combining_classifiers2.jpg},
+  last visited 07/14/2016.
+
+\bibitem[\protect\citeauthoryear{Pr{\"u}gel-Bennett}{Pr{\"u}gel-Bennett}{2004}]{PRUGELBENNETT2004135}
+\textsc{Pr{\"u}gel-Bennett, A.} (2004): \enquote{When a genetic algorithm
+  outperforms hill-climbing,} \emph{Theoretical Computer Science}, 320, 135 --
+  153.
+
+\bibitem[\protect\citeauthoryear{Radtke, Sabourin, and Wong}{Radtke
+  et~al.}{2006}]{radtke2006impact}
+\textsc{Radtke, P., R.~Sabourin, and T.~Wong} (2006): \enquote{Impact of
+  solution over-fit on evolutionary multi-objective optimization for
+  classification systems,} \emph{Proceedings of IJCNN, Vancouver, Canada}.
+
+\bibitem[\protect\citeauthoryear{Robilliard and Fonlupt}{Robilliard and
+  Fonlupt}{2002}]{Robilliard2002}
+\textsc{Robilliard, D. and C.~Fonlupt} (2002): \emph{Backwarding: An
+  Overfitting Control for Genetic Programming in a Remote Sensing Application},
+  Springer Berlin Heidelberg, 245--254.
+
+\bibitem[\protect\citeauthoryear{Russell and Norvig}{Russell and
+  Norvig}{1995}]{russell1995modern}
+\textsc{Russell, S. and P.~Norvig} (1995): \emph{Artificial Intelligence: A
+  modern approach}, vol.~25, Citeseer.
+
+\bibitem[\protect\citeauthoryear{Servet, Trav{\'e}-Massuy{\`e}s, and
+  Stern}{Servet et~al.}{1997}]{servet1997telephone}
+\textsc{Servet, I., L.~Trav{\'e}-Massuy{\`e}s, and D.~Stern} (1997):
+  \enquote{Telephone network traffic overloading diagnosis and evolutionary
+  computation techniques,} in \emph{European Conference on Artificial
+  Evolution}, Springer, 137--144.
+
+\bibitem[\protect\citeauthoryear{Shi and Eberhart}{Shi and
+  Eberhart}{1998}]{shi1998modified}
+\textsc{Shi, Y. and R.~Eberhart} (1998): \enquote{A modified particle swarm
+  optimizer,} in \emph{Evolutionary Computation Proceedings, 1998. IEEE World
+  Congress on Computational Intelligence., The 1998 IEEE International
+  Conference on}, IEEE, 69--73.
+
+\bibitem[\protect\citeauthoryear{Skiena}{Skiena}{2008}]{skiena2008algorithm}
+\textsc{Skiena, S.~S.} (2008): \emph{The algorithm design manual}, Springer.
+
+\bibitem[\protect\citeauthoryear{Sun and Pfahringer}{Sun and
+  Pfahringer}{2011}]{sun2011bagging}
+\textsc{Sun, Q. and B.~Pfahringer} (2011): \enquote{Bagging ensemble
+  selection,} in \emph{Australasian Joint Conference on Artificial
+  Intelligence}, Springer, 251--260.
+
+\bibitem[\protect\citeauthoryear{Tsoumakas, Partalas, and Vlahavas}{Tsoumakas
+  et~al.}{2008}]{tsoumakas2008taxonomy}
+\textsc{Tsoumakas, G., I.~Partalas, and I.~Vlahavas} (2008): \enquote{A
+  taxonomy and short review of ensemble selection,} in \emph{Workshop on
+  Supervised and Unsupervised Ensemble Methods and Their Applications}.
+
+\bibitem[\protect\citeauthoryear{Wattenberg and Juels}{Wattenberg and
+  Juels}{1996}]{wattenberg1996stochastic}
+\textsc{Wattenberg, M. and A.~Juels} (1996): \enquote{Stochastic hillclimbing
+  as a baseline method for evaluating genetic algorithms,} in \emph{Proceedings
+  of the 1995 Conference}, vol.~8, 430.
+
+\bibitem[\protect\citeauthoryear{Zhou}{Zhou}{2012}]{zhou2012ensemble}
+\textsc{Zhou, Z.-H.} (2012): \emph{Ensemble methods: foundations and
+  algorithms}, CRC press.
+
+\end{thebibliography}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Backtracking Search Algorithm\n\n# Initialization\n  # Selection I \n    # Mutation\n    # Crossover\n  # Selection II\n# stop\n\n#options(digits=4) # sensible?\n\nsetwd(\"/Users/Lara/Dropbox/Uni/Predictive/Code/Final\")\nload(\"trial.prediction.Rda\")\nload(\"trial.forecast.Rda\")\nload(\"trial.d.valid.Rda\")\n# load d.valid\n\nX        <- forecasts\nY        <- as.numeric(d.valid$returnBin)-1\n\n# Initial Parameters\npopsize  <- 10          # population size\ndim      <- ncol(X)     # problem dimension\nup       <- rep(1, dim) # upper bound of search space, here rowSums(weights) = 1\nlow      <- rep(0, dim) # lower bound of search space\nmixrate  <- 1           # rate of mutating individuals\nmaxcycle <- 800         # number of iterations\n\n\n\n# Fitness Function to be minimized (MSE)\nfit.fun <- function(weights, data) {\n  return(sqrt(colSums((data*weights - Y) ^2L)))\n}\n\n# Population Function (generates weights that sum up to 1)\ngen.pop <- function(popsize, dim, low, up) {\n  m <- round(matrix(runif(popsize*dim, low, up), ncol=dim), 4)\n  m <- ifelse(m < 0.01, 0, m)\n  # rounding might be an issue here!!!\n  m <- round(sweep(m, 1, rowSums(m), FUN=\"/\"), 4)\n  m\n}\n\n\n# generate population\npop <- gen.pop(popsize, dim, low, up)\n\n# evaluate fitness\nfitnesspop <- t(apply(pop, 1, fit.fun, data=forecasts))\n\n# generate historic population\nhist_pop <- gen.pop(popsize, dim, low, up)\n\n\n### Algorithm\nfor (j in 1:maxcycle){\n  \n  if (runif(1) < runif(1)){hist_pop <- pop} else {hist_pop <- pop}\n  \n  # Permutation\n  hist_pop <- hist_pop[sample(nrow(hist_pop)),]\n  \n  # scale factor F\n  F <- runif(1) * 3 \n  \n  map <- matrix(0, ncol=dim, nrow=popsize)\n  \n  # Mutation + Crossover\n  \n  # two predefined strategies for mutation\n  if (runif(1) < runif(1)){\n    for (i in 1:nrow(map)){\n      for (u in sample(ncol(map), size=ceiling(runif(1)*dim*mixrate))){\n        map[i,u] <- 1\n      }}\n  } else {\n    for (i in 1:nrow(map)){\n      map[i, sample(1:ncol(map), 1)] <- 1\n    }}\n  \n  # Trial Population\n\n  mutant   <- pop\n  mutation <- pop + map*F*(hist_pop - pop)\n  mutant[map==1] <- 0\n  \n  # Boundary control (no negative values and the weights must sum to 1) + Sparsity\n\n  mutation <- abs(mutation)\n  mutation <- ifelse(mutation < 0.01, 0, mutation)\n  \n\n  # standardize and scale\n  mutation <- sweep(mutation, 1, rowSums(mutation, na.rm=T), \"/\")\n  mutation <- sweep(mutation, 1, 1-rowSums(mutant), \"*\")\n  \n  mutant[map==1] <- mutation[map==1]\n  \n  # Selection II\n  fitness_mutant   <- t(apply(mutant, 1, fit.fun, data=forecasts))\n  \n  ind              <- apply(fitness_mutant < fitnesspop, 1, function(x) any(x == T))\n  fitnesspop[ind,] <- fitness_mutant[ind,]\n  pop[ind,]        <- mutant[ind,] # no individualwise fitness\n\n  minimum         <- min(fitnesspop)\n  minimizer       <- pop[which.min(apply(fitnesspop, 1, min)),] \n    \n  }\n\n\n\n# make it a function\n\nbsa <- function(X, Y, popsize, up_val, low_val, mixrate, generations){\n  dim <- ncol(X)\n  up <- rep(up_val, dim)\n  low <- rep(low_val, dim)\n  \n}\n\n\n\n\n\n\n\n\n# still needs bagging\n\n# doing ES on a bagged sample\ni         <- i + 1L\nind       <- which(W[i, ] == 1)\nW[i, ind] <- W[i, ind] * ES(X[, ind], Y, iter)\n\n",
+    "created" : 1540214194544.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "555644379",
+    "id" : "D6B7390B",
+    "lastKnownWriteTime" : 1466511808,
+    "last_content_update" : 1466511808,
+    "path" : "C:/Users/Lara/One Drive - Warwick/OneDrive - University of Warwick/GeneticAgorithm/Backtracking.R",
+    "project_path" : "Backtracking.R",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

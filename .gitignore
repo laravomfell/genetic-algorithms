@@ -1,0 +1,11 @@
+# folders to ignore
+/Nikita_Codes/
+/Literature/
+
+# add the latex helper files too
+
+
+# individual files to ignore
+Backtracking.R
+/code/proof_file.R
+

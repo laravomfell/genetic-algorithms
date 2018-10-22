@@ -1,0 +1,141 @@
+\section{Results}
+%EVALUTATE WITH REGARDS TO RUNTIME(..), ERROR RATE AND OVERFITTING
+
+Three aspects are considered in the evaluation of the results: 1. runtime, 2. performance and 3. overfitting on the training data. 
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{lrrrr}
+		\hline
+		Algorithms & ErrorRate (binary) & EnsembleSize (binary) & ErrorRate (real-valued) & EnsembleSize (real-valued) \\ 
+		\hline
+		BSA1 & 0.24132 & 5 & 0.24658 & 26 \\ 
+		BSA2 & 0.23956 & 3 & 0.24188 & 13 \\ 
+		BSA.BAG3 & 0.24541 & 9 & 0.24460 & 18 \\ 
+		BSA.BAG4 & 0.23956 & 3 & 0.24030 & 6 \\ 
+		GA1 & 0.24157 & 4 & 0.23951 & 4 \\ 
+		GA2 & 0.24132 & 5 & 0.24066 & 5 \\ 
+		GA3 & 0.24064 & 4 & 0.24016 & 5 \\ 
+		GA4 & 0.24300 & 3 & 0.24022 & 3 \\ 
+		GA.BAG5 & 0.23931 & 2 & 0.23909 & 3 \\ 
+		GA.BAG6 & 0.24451 & 3 & 0.24024 & 4 \\ 
+		GA.BAG7 & 0.23931 & 2 & 0.23910 & 3 \\ 
+		GA.BAG8 & 0.24450 & 3 & 0.24182 & 4 \\ 
+		PBIL1 & 0.25158 & 9 & 0.25159 & 17 \\ 
+		PBIL2 & 0.23956 & 3 & 0.24658 & 26 \\ 
+		PBIL3 & 0.24692 & 7 & 0.24519 & 9 \\ 
+		PBIL4 & 0.24670 & 7 & 0.24257 & 9 \\ 
+		PBIL.BAG5 & 0.25126 & 8 & 0.25119 & 12 \\ 
+		PBIL.BAG6 & 0.24580 & 5 & 0.24537 & 16 \\ 
+		PBIL.BAG7 & 0.24848 & 6 & 0.24355 & 7 \\ 
+		PBIL.BAG8 & 0.24670 & 7 & 0.24276 & 8 \\ 
+		PSOG1 & 0.24891 & 8 & 0.24749 & 13 \\ 
+		PSOG2 & 0.24815 & 6 & 0.24766 & 14 \\ 
+		PSOG3 & 0.24596 & 5 & 0.25268 & 7 \\ 
+		PSOG4 & 0.26188 & 2 & 0.26169 & 4 \\ 
+		PSOG.BAG5 & 0.25062 & 7 & 0.24793 & 10 \\ 
+		PSOG.BAG6 & 0.24857 & 3 & 0.25255 & 5 \\ 
+		PSOG.BAG7 & 0.24792 & 4 & 0.25414 & 4 \\ 
+		PSOG.BAG8 & 0.26188 & 2 & 0.26170 & 4 \\ 
+		PSOL1 & 0.24521 & 4 & 0.24048 & 5 \\ 
+		PSOL2 & 0.24644 & 6 & 0.24594 & 8 \\ 
+		PSOL3 & 0.24088 & 3 & 0.24472 & 12 \\ 
+		PSOL4 & 0.24814 & 7 & 0.24857 & 8 \\ 
+		PSOL.BAG5 & 0.24794 & 4 & 0.24509 & 6 \\ 
+		PSOL.BAG6 & 0.24819 & 6 & 0.24647 & 6 \\ 
+		PSOL.BAG7 & 0.23931 & 2 & 0.24029 & 7 \\ 
+		PSOL.BAG8 & 0.24701 & 5 & 0.24558 & 11 \\ 
+		\hline
+	\end{tabular}
+\end{table}
+
+
+
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{llll}
+		\hline
+		Algorithms & Error Rate & Encoding & Ensemble Size \\ 
+		\hline
+		BSA1 & 0.2413 & binary & 5 \\ 
+		BSA1 & 0.2466 & real-valued & 26 \\ 
+		BSA2 & 0.2396 & binary & 3 \\ 
+		BSA2 & 0.2419 & real-valued & 13 \\ 
+		BSA.BAG1 & 0.2454 & binary & 9 \\ 
+		BSA.BAG1 & 0.2446 & real-valued & 18 \\ 
+		BSA.BAG2 & 0.2396 & binary & 3 \\ 
+		BSA.BAG2 & 0.2403 & real-valued & 6 \\ 
+		GA1 & 0.2416 & binary & 4 \\ 
+		GA1 & 0.2395 & real-valued & 4 \\ 
+		GA2 & 0.2413 & binary & 5 \\ 
+		GA2 & 0.2407 & real-valued & 5 \\ 
+		GA3 & 0.2406 & binary & 4 \\ 
+		GA3 & 0.2402 & real-valued & 5 \\ 
+		GA4 & 0.2430 & binary & 3 \\ 
+		GA4 & 0.2402 & real-valued & 3 \\ 
+		GA.BAG1 & 0.2393 & binary & 2 \\ 
+		GA.BAG1 & 0.2391 & real-valued & 3 \\ 
+		GA.BAG2 & 0.2445 & binary & 3 \\ 
+		GA.BAG2 & 0.2402 & real-valued & 4 \\ 
+		GA.BAG3 & 0.2393 & binary & 2 \\ 
+		GA.BAG3 & 0.2391 & real-valued & 3 \\ 
+		GA.BAG4 & 0.2445 & binary & 3 \\ 
+		GA.BAG4 & 0.2418 & real-valued & 4 \\ 		
+		PBIL1 & 0.2516 & binary & 9 \\ 
+		PBIL1 & 0.2516 & real-valued & 17 \\ 
+		PBIL2 & 0.2396 & binary & 3 \\ 
+		PBIL2 & 0.2466 & real-valued & 26 \\ 
+		PBIL3 & 0.2469 & binary & 7 \\ 
+		PBIL3 & 0.2452 & real-valued & 9 \\ 
+		PBIL4 & 0.2467 & binary & 7 \\ 
+		PBIL4 & 0.2426 & real-valued & 9 \\ 
+		PBIL.BAG1 & 0.2513 & binary & 8 \\ 
+		PBIL.BAG1 & 0.2512 & real-valued & 12 \\ 
+		PBIL.BAG2 & 0.2458 & binary & 5 \\ 
+		PBIL.BAG2 & 0.2454 & real-valued & 16 \\ 
+		PBIL.BAG3 & 0.2485 & binary & 6 \\ 
+		PBIL.BAG3 & 0.2436 & real-valued & 7 \\ 
+		PBIL.BAG4 & 0.2467 & binary & 7 \\ 
+		PBIL.BAG4 & 0.2428 & real-valued & 8 \\ 
+		PSOG1 & 0.2489 & binary & 8 \\ 
+		PSOG1 & 0.2475 & real-valued & 13 \\ 
+		PSOG2 & 0.2482 & binary & 6 \\ 
+		PSOG2 & 0.2477 & real-valued & 14 \\ 
+		PSOG3 & 0.2460 & binary & 5 \\ 
+		PSOG3 & 0.2527 & real-valued & 7 \\ 
+		PSOG4 & 0.2619 & binary & 2 \\ 
+		PSOG4 & 0.2617 & real-valued & 4 \\ 
+		PSOG.BAG1 & 0.2506 & binary & 7 \\ 
+		PSOG.BAG1 & 0.2479 & real-valued & 10 \\ 
+		PSOG.BAG2 & 0.2486 & binary & 3 \\ 
+		PSOG.BAG2 & 0.2526 & real-valued & 5 \\ 
+		PSOG.BAG3 & 0.2479 & binary & 4 \\ 
+		PSOG.BAG3 & 0.2541 & real-valued & 4 \\ 
+		PSOG.BAG4 & 0.2619 & binary & 2 \\ 
+		PSOG.BAG4 & 0.2617 & real-valued & 4 \\ 
+		PSOL1 & 0.2452 & binary & 4 \\ 
+		PSOL1 & 0.2405 & real-valued & 5 \\ 
+		PSOL2 & 0.2464 & binary & 6 \\ 
+		PSOL2 & 0.2459 & real-valued & 8 \\ 
+		PSOL3 & 0.2409 & binary & 3 \\ 
+		PSOL3 & 0.2447 & real-valued & 12 \\ 
+		PSOL4 & 0.2481 & binary & 7 \\ 
+		PSOL4 & 0.2486 & real-valued & 8 \\ 
+		PSOL.BAG1 & 0.2479 & binary & 4 \\ 
+		PSOL.BAG1 & 0.2451 & real-valued & 6 \\ 
+		PSOL.BAG2 & 0.2482 & binary & 6 \\ 
+		PSOL.BAG2 & 0.2465 & real-valued & 6 \\ 
+		PSOL.BAG3 & 0.2393 & binary & 2 \\ 
+		PSOL.BAG3 & 0.2403 & real-valued & 7 \\ 
+		PSOL.BAG4 & 0.2470 & binary & 5 \\ 
+		PSOL.BAG4 & 0.2456 & real-valued & 11 \\ 
+		SHC1 & 0.2390 & binary & 1 \\ 
+		SHC.BAG1 & 0.2416 & binary & 4 \\ 
+		HC1 & 0.2390 & binary & 1 \\ 
+		HC.BAG1 & 0.2421 & binary & 4 \\ 
+		
+		\hline
+	\end{tabular}
+\end{table}
