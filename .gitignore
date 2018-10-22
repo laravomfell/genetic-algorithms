@@ -41,6 +41,19 @@
 *.synctex.gz(busy)
 *.pdfsync
 
+## R files 
+
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+
+# RStudio files
+.Rproj.user/
+
+
 # individual files to ignore
 Backtracking.R
 /code/proof_file.R
