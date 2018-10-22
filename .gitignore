@@ -55,6 +55,10 @@
 
 *.Rproj
 
+*.png
+*.tex
+*.jpg
+
 # individual files to ignore
 Backtracking.R
 /code/proof_file.R
