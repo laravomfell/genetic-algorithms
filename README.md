@@ -8,4 +8,6 @@ This repo provides code for five common optimization algorithms to optimize ense
 4. Particle Swarm Optimization
 5. (Stochastic hill-climbing)
 
-The included paper in the "paper" folder showcases their use for ensemble selection of predictions used in the Data Mining Cup. The original data cannot be uploaded on GitHub. I will soon upload a codefile showcasing the use of the algorithms on a toy dataset.
+The included paper in the "paper" folder showcases their use for ensemble selection of predictions used in the Data Mining Cup. 
+
+The original data cannot be uploaded on GitHub. I will soon upload a codefile showcasing the use of the algorithms on a toy dataset.
