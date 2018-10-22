@@ -58,6 +58,8 @@
 *.png
 *.tex
 *.jpg
+*.bib
+
 
 # individual files to ignore
 Backtracking.R
