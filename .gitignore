@@ -53,6 +53,7 @@
 # RStudio files
 .Rproj.user/
 
+*.Rproj
 
 # individual files to ignore
 Backtracking.R
